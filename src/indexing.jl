@@ -11,5 +11,5 @@ function _setindex!(xs::CuArray{T}, v::T, i::Integer) where T
 end
 
 function Base.view(xs::CuArray{T}, i::UnitRange) where T
-  CuVector{T}(xs.buf, xs.offset+(i.start-1)*sizeof(T), (i.stop-i.start+1,))
+  CuVector{T}(xs.buf, (i.stop-i.start+1,), xs.offset+(i.start-1)*sizeof(T))
 end
